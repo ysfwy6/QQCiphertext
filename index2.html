@@ -1,0 +1,90 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>QQ表情密文工具</title>
+<STYLE type="text/css">
+<!--CSS样式代码位置-->
+			input{
+                border: 1px solid #ccc;
+                padding: 7px 0px;
+                border-radius: 3px;
+                padding-left:5px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+            }
+            input:focus{
+                    border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+            }
+</STYLE>
+</head>
+
+<body>
+<p>QQ表情密文工具</p>
+<textarea type="text" id="av"></textarea><button onclick="return av() && false">加密</button>
+<br>
+<br>
+<textarea type="text" id="bv"></textarea><button onclick="return bv() && false">解密</button>
+<p>结果：</p>
+<p id="result">(等待输入)</p>
+<input id="input">
+<button onclick="copyText()">复制</button>
+<p>别问我为何这么丑，我一写 JS 的不是写 HTML 的。这叫 日　式　风　格（大嘘）</p>
+<p>本页面使用 <a href="https://mrhso.github.io/IshisashiWebsite/BVwhodoneit/" target="_blank">BV本地转换工具</a> 套壳而成，By：<a href="https://space.bilibili.com/229778960" target="_blank">缇雷紫缨</a></p>
+
+<script>
+function copyText() {
+  var text = document.getElementById("result").innerText;
+  var input = document.getElementById("input");
+  input.value = text; // 修改文本框的内容
+  input.select(); // 选中文本
+  document.execCommand("copy"); // 执行浏览器复制命令
+  alert("复制成功");
+ }
+
+const av2bv = (av) => {
+	let num = 'Empty';
+	num = av.replace(/([\w\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F])/g, '$1');
+	document.execCommand("copy");
+    return num;
+};
+
+const bv2av = (bv) => {
+    let str = 'Empty';
+	str = bv.replace(//g, '');
+	document.execCommand("copy");
+    return str;
+};
+
+const av = () => {
+    let result = av2bv(document.getElementById('av').value);
+    document.getElementById('result').innerHTML = `${result}`;
+};
+
+const bv = () => {
+    let result = bv2av(document.getElementById('bv').value);
+    document.getElementById('result').innerHTML = `${result}`;
+};
+
+document.getElementById('av').addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+        av();
+    };
+});
+
+document.getElementById('bv').addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+        bv();
+    };
+});
+</script>
+</body>
+</html>
