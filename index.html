@@ -59,8 +59,8 @@ const av2bv = (av) => {
 	num = av.replace(/([\w \x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F])/g, '$1');
     if (av.match(/([])/g)) {
         return '¿你在想桃子？';
-    }
-    return num;
+    } else {
+    	return num;
 
 };
 
@@ -69,8 +69,8 @@ const bv2av = (bv) => {
 	str = bv.replace(//g, '');
     if (!bv.match(/([])/g)) {
         return '¿你在想桃子？';
-    }
-    return num;
+    } else {
+    	return  num;
 };
 
 const av = () => {
