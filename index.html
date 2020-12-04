@@ -56,16 +56,22 @@ function copyText() {
 
 const av2bv = (av) => {
 	let num = 'Empty';
-	num = av.replace(/([\w\x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F])/g, '$1');
-	document.execCommand("copy");
-    return num;
+	num = av.replace(/([\w \x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F])/g, '$1');
+    if (av.match(/([])/g)) {
+        return '¿你在想桃子？';
+    } else {
+        return num;
+    };
 };
 
 const bv2av = (bv) => {
     let str = 'Empty';
 	str = bv.replace(//g, '');
-	document.execCommand("copy");
-    return str;
+        if (!bv.match(/([])/g)) {
+        return '¿你在想桃子？';
+    } else {
+        return str;
+    };
 };
 
 const av = () => {
