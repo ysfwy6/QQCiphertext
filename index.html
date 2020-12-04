@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<p>QQ表情密文工具</p>
+<p>QQ表情密文工具  Build001</p>
 <textarea type="text" id="av"></textarea><button onclick="return av() && false">加密</button>
 <br>
 <br>
@@ -57,7 +57,7 @@ function copyText() {
 const av2bv = (av) => {
 	let num = 'Empty';
 	num = av.replace(/([\w \x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F])/g, '$1');
-    if (av.match(/([])/g)) {
+    if (av.match(/([][^\w \x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F])/g)) {
         return '¿你在想桃子？';
     } else {
         return num;
@@ -67,7 +67,7 @@ const av2bv = (av) => {
 const bv2av = (bv) => {
     let str = 'Empty';
 	str = bv.replace(//g, '');
-        if (!bv.match(/([])/g)) {
+        if (!bv.match(/([][^\w \x21-\x2f\x3a-\x40\x5b-\x60\x7B-\x7F])/g)) {
         return '¿你在想桃子？';
     } else {
         return str;
