@@ -36,8 +36,14 @@
 <p id="result">(等待输入)</p>
 <input id="input">
 <button onclick="copyText()">复制</button>
-<p>别问我为何这么丑，我一写 JS 的不是写 HTML 的。这叫 日　式　风　格（大嘘）</p>
-<p>本页面使用 <a href="https://mrhso.github.io/IshisashiWebsite/BVwhodoneit/" target="_blank">BV本地转换工具</a> 套壳而成，By：<a href="https://space.bilibili.com/229778960" target="_blank">缇雷紫缨</a></p>
+<p>使用方式：</p>
+<p>加密：将需要加密的密文（格式见下）填入加密按钮前的输入框，点击加密，再点击复制，然后粘贴到QQ聊天框里自动变成表情</p>
+<p>解密：双击QQ里对应密文（即表情符号），按复制，再粘贴到解密按钮前的输入框，点击解密自动出结果</p>
+<p>密文要求：仅可使用英文字母，半角符号，不可包含汉字，全角符号等</p>
+<br>
+<p>原理：手机版QQ识别自带表情符号的时候使用的是一个特殊控制字符加一位其他字符的方式，通过组合后一位字符即可实现在一串表情中隐藏密文</p>
+<br>
+<p>By：<a href="https://space.bilibili.com/229778960" target="_blank">缇雷紫缨</a></p>
 
 <script>
 function copyText() {
