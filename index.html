@@ -23,7 +23,9 @@
                     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
                     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
             }
-				textarea{
+	    textarea{
+		height: 50px
+		width: 50px
                 border: 1px solid #ccc;
                 padding: 7px 0px;
                 border-radius: 3px;
@@ -40,21 +42,15 @@
                     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
                     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
             }
-#btn{ width:100px;height:40px; font-size:20px;border-radius:10px;
-background:#ffffff;margin-top:550px; }
-#main{ width:800px;height:600px; background:#cc00cc; margin:0 auto;
-position:relative;}
-#vido{ width:602px; height:402px; border:1px dotted #00ff66; 
-margin:0 auto; position:absolute; top:100px; left:400px;}
 </STYLE>
 </head>
 
 <body>
-<p>QQ表情密文工具  Build014</p>
-<textarea type="text" id="av"></textarea><button onclick="return av() && false">加密</button>
+<p>QQ表情密文工具  Build015</p>
+<textarea type="text" id="av" required></textarea><button onclick="return av() && false"> 加密</button>
 <br>
 <br>
-<textarea type="text" id="bv"></textarea><button onclick="return bv() && false">解密</button>
+<textarea type="text" id="bv" required></textarea><button onclick="return bv() && false"> 解密</button>
 <p>结果：</p>
 <p id="result">(等待输入)</p>
 <input id="input">
@@ -64,26 +60,18 @@ margin:0 auto; position:absolute; top:100px; left:400px;}
 <p>解密：双击QQ里对应密文（即表情符号），按复制，【切记！】将QQ切到后台并使用其他浏览器打开本页面，再把复制的字符粘贴到解密按钮前的输入框，点击解密自动出结果</p>
 <p>密文要求：可使用英文字母，半角符号（能正常显示表情），但如果使用汉字，全角符号等字符可能会导致无法显示出表情（但不影响解密效果）</p>
 <p>原理：手机版QQ识别自带表情符号的时候使用的是一个特殊控制字符加一个其他字符的方式，通过更改后一个字符即可实现在一串表情中隐藏密文</p>
-<div id="main" class="">
-<input type="button" id="btn" onclick="open_video()" value="播放教学视频">
-</div>
+<a target="_blank" onclick="openVideo('tutorial.mp4')">
+<div>跳转新页面播放</div>
+</a>
 <br>
 <p>By：<a href="https://space.bilibili.com/229778960" target="_blank">缇雷紫缨</a></p>
 
-<div id="vido" class="">
-    <video width="600" height="400" controls>
-         <source src="tutorial.mp4" type="video/mp4">
-    </video>
-</div>
 <script>
-window.onload=function non(){
-document.getElementById("vido").style.cssText = "display:none;";
+function openVideo(src) {
+	var page = window.open();
+        var html="<body style='background:black'><div style='width:80%;margin:auto;'><video controls width='100%' autoplay src='"+src+ "'></video> </div></body>"
+        page.document.write(html);
 }
-
-function open_video(){
-document.getElementById("vido").style.cssText = "display:block;";
-}
-
 function copyText() {
   var text = document.getElementById("result").innerText;
   var input = document.getElementById("input");
@@ -91,7 +79,7 @@ function copyText() {
   input.select(); // 选中文本
   document.execCommand("copy"); // 执行浏览器复制命令
   alert("复制成功");
- }
+}
 
 const av2bv = (av) => {
 	let num = 'Empty';
