@@ -6,7 +6,7 @@
 <title>QQ表情密文工具</title>
 <STYLE type="text/css">
 <!--CSS样式代码位置-->
-			input{
+	    input{
                 border: 1px solid #ccc;
                 padding: 7px 0px;
                 border-radius: 3px;
@@ -46,7 +46,7 @@
 </head>
 
 <body>
-<p>QQ表情密文工具  Build020  本站短链：v666.ml/qq</p>
+<p>QQ表情密文工具  Build021  本站短链：v666.ml/qq</p>
 <textarea type="text" id="av" required></textarea><button onclick="return av() && false"> 加密</button>
 <br>
 <br>
@@ -61,17 +61,28 @@
 <p>密文要求：可使用英文字母，半角符号（能正常显示表情），但如果使用汉字，全角符号等字符可能会导致无法显示出表情（但不影响解密效果）</p>
 <p>原理：手机版QQ识别自带表情符号的时候使用的是一个特殊控制字符加一个其他字符的方式，通过更改后一个字符即可实现在一串表情中隐藏密文</p>
 <p>电脑版QQ兼容性报告：电脑版QQ由于无法复制QQ自带表情符号导致收到的密文不可解密，只能够发送加密信息，且从自己的角度看并没有变成表情，不过对方接收到的仍然是表情符号（手机版可正常解密）</p>
-<p>教程视频（力荐）：<a href="https://www.bilibili.com/video/BV1WT4y1M7eu/" target="_blank">哔哩哔哩</a><p>
-<a target="_blank" onclick="openVideo('tutorial.mp4')">
+<p>教程视频：<a href="https://www.bilibili.com/video/BV1WT4y1M7eu/" target="_blank">哔哩哔哩</a><p>
+<!--<a target="_blank" onclick="openVideo('tutorial.mp4')">
 <div>【点我播放教程视频（主线路，可能出现卡顿）】</div>
 </a>
 <a target="_blank" onclick="openVideo('https://v666.ml/tutorial.mp4')">
 <div>【点我播放教程视频（备用线路，总流量有限，请节约使用）】</div>
-</a>
+</a>-->
 <br>
 <p>By：<a href="https://space.bilibili.com/229778960" target="_blank">缇雷紫缨</a></p>
 
 <script>
+var system ={};
+	var p = navigator.platform;
+       system.win = p.indexOf("Win") == 0;
+       system.mac = p.indexOf("Mac") == 0;
+       system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+       if(system.win||system.mac||system.xll){//如果是电脑
+               alert("您当前正使用电脑访问本页面，请使用手机搭配本工具！");
+       }else{  //如果是手机
+              window.location.href="#";
+}
+</script>
 function openVideo(src) {
 	var page = window.open();
         var html="<body style='background:black'><div style='width:80%;margin:auto;'><video controls width='100%' autoplay src='"+src+ "'></video> </div></body>"
